@@ -30,3 +30,5 @@ def createFichierLP(nomFichier,nombreVariables):
     monFichier.write("\n")
     monFichier.write("end")
     monFichier.close()
+
+
