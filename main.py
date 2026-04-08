@@ -23,6 +23,18 @@ listePrefSpe = tme1.lire_preferences_spe("PrefSpe.txt")
 print(listePrefSpe)
 
 
-# Question 2
+# Question 3
+def aEtuLibre(dicoEtu):
+    for etu in dicoEtu :
+        if dicoEtu[etu] == False :
+            return False
+    return True
 
-# 1. 
+def gale_shapley_etu(prefSpe, prefEtu):
+
+    etu = {}
+    for i in range (0, len(listePrefEtu)):
+        etu[i] = True
+    
+    while ()
+    
