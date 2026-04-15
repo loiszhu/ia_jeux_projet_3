@@ -19,7 +19,7 @@ print(listePrefEtu)
 print("\n")
 
 print("Liste des préférences des masters sur les étudiants")
-listePrefSpe = tme1.lire_preferences_spe("PrefSpe.txt")
+listePrefSpe, capacites = tme1.lire_preferences_spe("PrefSpe.txt")
 print(listePrefSpe)
 
 
