@@ -31,10 +31,36 @@ def aEtuLibre(dicoEtu):
     return True
 
 def gale_shapley_etu(prefSpe, prefEtu):
+    # ensemble d'étudiants libres (au début tout le monde est libre)
+    libres = list(a for a in range (len(prefEtu)))
 
-    etu = {}
-    for i in range (0, len(listePrefEtu)):
-        etu[i] = True
+    # compte le nombre de spé que l'étudiant a choisit
+    propositions = list(0 for a in range (len(prefEtu)))
+
+    # spé affectée pour chaque étudiant : {SpeX:EtuX, SpeY:EtuY, ...}
+    aff = {}
+
+    # tant qu'il existe un étudiant libre
+    while (libres) :
+        # sélectionne un étudiant
+        etu = libres[0]
+
+        # sélectionne la spé préféréé de l'étudiant
+        spe = prefEtu[etu][propositions[etu]]
+        propositions[etu] += 1 # incrémente le nombre de proposition de l'étu
+
+        # si la spé est libre, alors on lui donne cette proposition
+        if spe not in aff :
+            aff[spe] = etu
+            libres.pop(0)
+        
+        # sinon on compare si le spé préfère l'etu actuel, ou l'etu deja affecté
+        else :
+            autre = libres[0]
+            # s'il préfère cet etu, on le remplace
+            if prefSpe[spe].index(etu) < prefSpe[spe].index(autre) :
+                aff[spe] = etu
+                libres.pop(0)
+                libres.append(autre)
     
-    while ()
-    
+    return aff
