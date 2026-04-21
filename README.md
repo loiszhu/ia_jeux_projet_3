@@ -42,7 +42,8 @@ Gale-Shapley "côté étudiant" : c'est les étudiants qui font les propositions
 - le pré-calcul de la matrice prend O(n*m)
 - la boucle principale effectue au plus n*m propositions
 - Chaque opération interne est en O(1) ou O(Capacité)
-la complexité totale est de O(n*m) donc O(n^2)
+
+#### La complexité totale est de O(n*m) donc O(n^2)
 
 ### Question 4 - Algorithme "côté parcours"
 
