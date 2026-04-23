@@ -42,8 +42,14 @@ def gale_shapley_etu(prefEtu, prefSpe, capacites):
     # Tableau des listes des étudiants affectés pour chaque master
     spe_affectations = [[] for _ in range(nb_spe)]
 
+    # Q10 - ajout d'un compteur d'itérations
+    nb_iterations = 0
+
     # Tant qu'il existe un étudiant libre
     while (etu_libres) :
+        # Q10 - incrémentation du compteur d'itérations à chaque boucle
+        nb_iterations += 1
+
         # On prend un étudiant libre
         etu_id = etu_libres.pop()
 
@@ -86,7 +92,7 @@ def gale_shapley_etu(prefEtu, prefSpe, capacites):
             else :
                 etu_libres.append(etu_id)
     
-    return spe_affectations
+    return spe_affectations, nb_iterations
 
 def gale_shapley_spe(prefEtu, prefSpe, capacites):
     nb_etu = len(prefEtu)

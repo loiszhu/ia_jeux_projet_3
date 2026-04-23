@@ -1,5 +1,6 @@
 # import exemple # Pour pouvoir utiliser les methodes de exemple.py
 import tme1
+import tme2
 import time
 
 # print("bonjour")
@@ -22,7 +23,7 @@ print("Liste des capacités d'étudiants de masters : \n", capacites, "\n")
 
 # Question 3
 debut = time.time()
-affectations_etu = tme1.gale_shapley_etu(listePrefEtu, listePrefSpe, capacites)
+affectations_etu, it_etu = tme1.gale_shapley_etu(listePrefEtu, listePrefSpe, capacites)
 fin = time.time()
 temps_exec = fin - debut
 print("Résultat d'affectation retournée par l'algo côté étudiant : \n", affectations_etu)
@@ -48,3 +49,11 @@ if not paires_spe:
     print("Aucune paire instable, affectation parcours est stable")
 else :
     print("Paires instables dans les affectations parcours : ", paires_spe)
+
+# Question 8 - Mesure du temps d'exécution de l'algorithme de Gale-Shapley
+tailles, temps = tme2.mesurer_temps()
+tme2.afficher_courbe_temps(tailles, temps)
+
+# Question 10 - Mesure du nombre d'itérations de l'algorithme de Gale-Shapley
+tailles, iterations = tme2.mesurer_iterations()
+tme2.afficher_courbe_ite(tailles, iterations)

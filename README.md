@@ -101,3 +101,20 @@ et
 Note sur la complexité : Pour des raisons de lisibilité, on a utilisé .index() pour retrouver les rangs dans la fonction trouver_paires_instables. Pour une implémentation optimale sur des données tres nombreux, il suffirait d'utiliser les matrices de rangs précalculées (comme dans nos 2 algorithmes précédents) pour effectuer ces comparaisons en O(1).   
 
 D'après le test, on observe que les deux algorithmes (étudiant et parcours) retournent la même affectation, et il n'existe pas de paires instables, donc notre résultat est stable.   
+
+### Question 9 - Complexité de nos algorithmes
+- Observation des résultats : on remarque que la courbe s'incligne vers le haut (convexe), ce qui est caractéristique d'une complexité quadratique, soit O(n^2).
+
+- Analyse théorique : 
+    * L'algorithme de Gale-Shapley garantit une terminaison en un nombre de propositions au plus égal à n^2 dans le cas d'un mariage stable classique.
+    * Dans notre configuration, le nombre de parcours est fixé à 10 et la somme des capacités est égale à n. Le nombre total de propositions est donc borné par n * m(10n).
+    * Si chaque opération à l'intérieur de la boucle était effectuée en temps constant, la complexité théorique devrait être linéaire, soit O(n).
+
+- Cohérence et justification : Cet écart est cohérent avec notre code. Pour chaque proposition, nous parcourons la liste des étudiants affectés pour trouver le "pire" candidat, une opération en O(n) qui transforme la complexité globale en O(n^2). L'utilisation de structures de données plus efficaces permettrait d'atteindre l'optimum théorique.
+
+### Question 10 - Analyse du nombre d'itérations
+- Observation des résultats : on remarque que la courbe forme une droite parfaite. Cela démontre que le nombre de fois où l'algorithme entre dans la boucle while est proportionnel au nombre d'étudiants.
+
+- Analyse théorique : comme chaque étudiant propose au maximum une seule fois à chaque master, le nombre total de propositions ne peut jamais dépasser n * m (soit 10n).
+
+- Cohérence et justification : le résultat est donc parfaitement cohérent avec l'analyse théorique. Pour un nombre de masters constant, le nombre d'itérations croît de manière linéaire, soit une complexité de O(n).
