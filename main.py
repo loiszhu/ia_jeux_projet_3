@@ -1,6 +1,7 @@
 # import exemple # Pour pouvoir utiliser les methodes de exemple.py
 import tme1
 import tme2
+import tme3
 import time
 
 # print("bonjour")
@@ -13,7 +14,6 @@ import time
 # TME 1
 
 # Question 1
-
 listePrefEtu = tme1.lire_preferences_etu("PrefEtu.txt")
 print("Liste des préférences des étudiants sur les masters : \n", listePrefEtu, "\n")
 
@@ -50,10 +50,24 @@ if not paires_spe:
 else :
     print("Paires instables dans les affectations parcours : ", paires_spe)
 
+print("\n")
+
+
+# TME 2
+
 # Question 8 - Mesure du temps d'exécution de l'algorithme de Gale-Shapley
-tailles, temps = tme2.mesurer_temps()
-tme2.afficher_courbe_temps(tailles, temps)
+# tailles, temps = tme2.mesurer_temps()
+# tme2.afficher_courbe_temps(tailles, temps)
 
 # Question 10 - Mesure du nombre d'itérations de l'algorithme de Gale-Shapley
-tailles, iterations = tme2.mesurer_iterations()
-tme2.afficher_courbe_ite(tailles, iterations)
+# tailles, iterations = tme2.mesurer_iterations()
+# tme2.afficher_courbe_ite(tailles, iterations)
+
+
+# TME 3
+scores_etudiants_q12 = tme3.resoudre_efficacite(listePrefEtu, listePrefSpe, capacites)
+print(f"scores_etudiants = {scores_etudiants_q12}")
+
+k, aff_q14, scores_etudiants_14 = tme3.resoudre_plus_petit_k(listePrefEtu, listePrefSpe, capacites)
+print(f"liste des affectations = {aff_q14}")
+print(f"scores_etudiants = {scores_etudiants_14} \n")
