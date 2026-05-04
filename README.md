@@ -86,8 +86,8 @@ Gale-Shapley "côté parcours" : C'est les masters qui font les propositions, et
 
 ### Question 5 - Résultats obtenus :
 
-Affectations "côté étudiant" : [[12, 5], [4], [9], [8], [10, 11], [0], [1], [7], [6], [3, 2]]   
-Affectations "côté parcours" : [[5, 12], [4], [9], [8], [10, 11], [0], [1], [7], [6], [3, 2]]
+Affectations "côté étudiant" : [5, 6, 9, 9, 1, 0, 8, 7, 3, 2, 4, 4, 0]
+Affectations "côté parcours" : [5, 6, 9, 9, 1, 0, 8, 7, 3, 2, 4, 4, 0]
 
 
 ### Question 6 - Stabilité de l'affectation
@@ -97,7 +97,7 @@ et
 - master_j a soit une place libre, soit un étudiant affecté qu'il aime moins que étudiant_i
 
 #### Les étapes pour trouver des paires instables : 
-1. Reconstruire l'affectation des étudiants (une liste d'identifiants des masters)
+1. Reconstruire l'affectation des masters (une liste d'identifiants des étudiants pour chaque master)
 2. Pour chaque étudiant, on liste les masters que l'étudiant prèfère à son master actuel
 3. On regarde si ces masters préférés veulent cet étudiant
     - si le master a encore de la place => paire instable
@@ -146,7 +146,7 @@ Affectation : [9, 6, 4, 9, 1, 0, 5, 7, 8, 2, 3, 4, 0]
 ### Question 12 - Efficacité maximale
 #### Trace d'exécution
 Somme des utilités (Etu + Masters) : 239.0
-Utilité moyenne par affectation : 18.38
+Utilité moyenne par affectation : 8.77
 Utilité minimale (le pire score d'un étudiant) : 5
 Scores des étudiants : [6, 9, 10, 10, 10, 9, 9, 9, 8, 10, 9, 5, 10]
 Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 4, 3, 0] 
@@ -176,4 +176,36 @@ Affectation : Etudiant 12 - Master 0 (1e voeu)
 Q14 - Résultat trouvé pour k = 4
 Somme des utilités (Etu + Masters) : 227.0
 Scores des étudiants : [6, 9, 10, 10, 10, 9, 9, 9, 8, 10, 6, 9, 10]
+Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 3, 4, 0] 
+
+
+### Question 15 - Comparaison des résultats
+GS côté étudiant
+Stable ? Oui, 0 paires instables
+Utilité minimale étudiant : 5
+Utilité moyenne étudiant : 8.85 
+[5, 6, 9, 9, 1, 0, 8, 7, 3, 2, 4, 4, 0]
+
+GS côté parcours
+Stable ? Oui, 0 paires instables
+Utilité minimale étudiant : 5
+Utilité moyenne étudiant : 8.85 
+[5, 6, 9, 9, 1, 0, 8, 7, 3, 2, 4, 4, 0]
+
+Q11-Équité
+Stable ? Non, 3 paires instables
+Utilité minimale étudiant : 6
+Utilité moyenne étudiant : 9.23 
+Affectation : [9, 6, 4, 9, 1, 0, 5, 7, 8, 2, 3, 4, 0] 
+
+Q12-Efficacité
+Stable ? Non, 7 paires instables
+Utilité minimale étudiant : 5
+Utilité moyenne étudiant : 8.77 
+Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 4, 3, 0] 
+
+Q14-Plus_petit_k
+Stable ? Non, 5 paires instables
+Utilité minimale étudiant : 6
+Utilité moyenne étudiant : 8.85 
 Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 3, 4, 0] 

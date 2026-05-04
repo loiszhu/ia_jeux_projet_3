@@ -126,7 +126,7 @@ def resoudre_efficacite(prefEtu, prefSpe, capacites):
                     scores_etudiants.append(u[i][j])
         
         # Calculer l'utilité moyenne globale de l'affectation
-        utilite_moyenne = somme_utilite / nb_etu 
+        utilite_moyenne = sum(scores_etudiants) / nb_etu 
         utilite_minimale = min(scores_etudiants)
 
         print(f"Q12 - Efficacité maximale")
@@ -189,6 +189,7 @@ def resoudre_plus_petit_k(prefEtu, prefSpe, capacites):
         # Si le modèle trouve une solution optimale, on s'arrête
         if model.status == gp.GRB.OPTIMAL :
             somme_utilite = model.objVal
+
             affectations = [0] * nb_etu
             scores_etudiants = []
             for i in range(nb_etu):
