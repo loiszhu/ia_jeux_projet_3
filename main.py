@@ -3,6 +3,7 @@ import tme1
 import tme2
 import tme3
 import time
+import matplotlib.pyplot as plt
 
 # print("bonjour")
 # maListe=exemple.lectureFichier("test.txt") # Execution de la methode lectureFichier du fichier exemple.
@@ -31,7 +32,7 @@ print(f"le temps d'exécution de l'algo est {temps_exec * 1000: .5f} ms")
 
 # Question 4 - GS côté parcours
 debut = time.time()
-affectations_etu_Q4 = tme1.gale_shapley_spe(matPrefEtu, matPrefSpe, capacites)
+affectations_etu_Q4, it_spe = tme1.gale_shapley_spe(matPrefEtu, matPrefSpe, capacites)
 fin = time.time()
 temps_exec = fin - debut
 print("Résultat d'affectation retournée par l'algo côté parcours : \n", affectations_etu_Q4)
@@ -56,13 +57,31 @@ print("\n")
 
 # TME 2
 
-# Question 8 - Mesure du temps d'exécution de l'algorithme de Gale-Shapley
-# tailles, temps = tme2.mesurer_temps()
-# tme2.afficher_courbe_temps(tailles, temps)
+#Question 8 - Mesure du temps d'exécution de l'algorithme de Gale-Shapley
+tailles, temps_etu = tme2.mesurer_temps(tme1.gale_shapley_etu)
+tailles, temps_spe = tme2.mesurer_temps(tme1.gale_shapley_spe)
 
-# Question 10 - Mesure du nombre d'itérations de l'algorithme de Gale-Shapley
-# tailles, iterations = tme2.mesurer_iterations()
-# tme2.afficher_courbe_ite(tailles, iterations)
+# Affichage de la courbe du temps d'exécution en fonction de n
+plt.plot(tailles, temps_etu, label="GS côté étudiant")
+plt.plot(tailles, temps_spe, label="GS côté parcours")
+plt.xlabel("n (nombre d'étudiants)")
+plt.ylabel("Temps (s)")
+plt.title("Temps d'exécution Gale-Shapley")
+plt.legend()
+plt.show()
+
+#Question 10 - Mesure du nombre d'itérations de l'algorithme de Gale-Shapley
+tailles, iterations_etu = tme2.mesurer_iterations(tme1.gale_shapley_etu)
+tailles, iterations_spe = tme2.mesurer_iterations(tme1.gale_shapley_spe)
+
+# Affichage de la courbe du nombre d'itérations en fonction de n
+plt.plot(tailles, iterations_etu, label="GS côté étudiant")
+plt.plot(tailles, iterations_spe, label="GS côté parcours")
+plt.xlabel("n (nombre d'étudiants)")
+plt.ylabel("Nombre d'itérations")
+plt.title("Nombre d'itérations Gale-Shapley")
+plt.legend()
+plt.show()
 
 
 # TME 3

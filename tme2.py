@@ -1,6 +1,5 @@
 import random
 import time
-import tme1
 import matplotlib.pyplot as plt
 
 # n : nombre d'étudiants, m : nombre de masters
@@ -39,8 +38,8 @@ def generer_capacites(n, m) :
         capacites[i] += 1
     return capacites
 
-# Mesure du temps d'exécution de l'algorithme de Gale-Shapley
-def mesurer_temps() :
+# Mesure du temps d'exécution d'un algorithme de Gale-Shapley côté étudiant / parcours
+def mesurer_temps(algo) :
     # On teste pour des tailles de n allant de 200 à 2000 par pas de 200
     tailles = list(range(200, 2001, 200))
     # temps_moyens contiendra le temps moyen d'exécution pour chaque taille de n
@@ -61,7 +60,7 @@ def mesurer_temps() :
 
             # Mesure du temps d'exécution de l'algorithme de Gale-Shapley côté étudiant
             debut = time.time()
-            tme1.gale_shapley_etu(CE, CP, capacites)
+            algo(CE, CP, capacites)
             fin = time.time()
 
             # Ajout du temps d'exécution à total pour calculer la moyenne plus tard
@@ -72,16 +71,8 @@ def mesurer_temps() :
 
     return tailles, temps_moyens
 
-# Affichage de la courbe du temps d'exécution en fonction de n
-def afficher_courbe_temps(tailles, temps):
-    plt.plot(tailles, temps)
-    plt.xlabel("n (nombre d'étudiants)")
-    plt.ylabel("Temps (s)")
-    plt.title("Temps d'exécution Gale-Shapley")
-    plt.show()
-
-# Mesure du nombre d'itérations de l'algorithme de Gale-Shapley côté étudiant
-def mesurer_iterations() :
+# Mesure du nombre d'itérations d'un algorithme de Gale-Shapley côté étudiant / parcours
+def mesurer_iterations(algo) :
     tailles = list(range(200, 2001, 200))
     iterations_moyennes = []
 
@@ -94,17 +85,10 @@ def mesurer_iterations() :
             CP = generer_pref_spe(n, m)
             capacites = generer_capacites(n, m)
 
-            _, nb_iterations = tme1.gale_shapley_etu(CE, CP, capacites)
+            _, nb_iterations = algo(CE, CP, capacites)
             total_iterations += nb_iterations
 
         iterations_moyennes.append(total_iterations / 10)
     
     return tailles, iterations_moyennes
 
-# Affichage de la courbe du nombre d'itérations en fonction de n
-def afficher_courbe_ite(tailles, iterations):
-    plt.plot(tailles, iterations)
-    plt.xlabel("n (nombre d'étudiants)")
-    plt.ylabel("Nombre d'itérations")
-    plt.title("Nombre d'itérations Gale-Shapley")
-    plt.show()

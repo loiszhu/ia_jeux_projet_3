@@ -1,10 +1,15 @@
 def lire_preferences_etu(f) :
     monFichier = open(f, "r")
+    # charge toutes les lignes du fichier dans une liste
     contenu = monFichier.readlines()
+    # on ignore la première ligne
     contenu = contenu[1:]
     monFichier.close()
+
     for i in range (0, len(contenu)) :
+        # découpe la ligne en une liste de mots
         contenu[i] = contenu[i].split()
+        # on ignore les deux premiers éléments de la liste, puis on convertit les éléments en entiers
         contenu[i] = [int(x) for x in contenu[i][2:]]
     return contenu
 
@@ -13,6 +18,7 @@ def lire_preferences_spe(f) :
     contenu = monFichier.readlines()
 
     ligne_cap = contenu[1].split()
+    # liste des capacités des masters
     capacites = [int(x) for x in ligne_cap[1:]]
 
     contenu = contenu[2:]
@@ -120,8 +126,14 @@ def gale_shapley_spe(prefEtu, prefSpe, capacites):
     # Tableau des listes des étudiants affectés pour chaque master
     spe_affectations = [[] for i in range(nb_spe)]
 
+    # Q10 - ajout d'un compteur d'itérations
+    nb_iterations = 0
+
     # Tant qu'il existe un master libre
     while (spe_libres) :
+        # Q10 - incrémentation du compteur d'itérations à chaque boucle
+        nb_iterations += 1
+
         # On prend un master libre au sommet de la pile
         spe_id = spe_libres.pop()
 
@@ -159,7 +171,7 @@ def gale_shapley_spe(prefEtu, prefSpe, capacites):
         if (capacites[spe_id]) > len(spe_affectations[spe_id]):
             spe_libres.append(spe_id)
 
-    return etu_affectations
+    return etu_affectations, nb_iterations
 
 def trouver_paires_instables(prefEtu, prefSpe, capacites, affectations_etu):
     paires_instables = []
