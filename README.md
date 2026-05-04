@@ -209,3 +209,26 @@ Stable ? Non, 5 paires instables
 Utilité minimale étudiant : 6
 Utilité moyenne étudiant : 8.85 
 Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 3, 4, 0] 
+
+
+2. Analyse des modèles
+
+A. L'unicité de la stabilité (Gale-Shapley)
+Les algorithmes de Gale-Shapley sont les seuls à garantir la stabilité parfaite (0 paire instable), évitant ainsi toute jalousie légitime. Fait remarquable pour cette instance de données : les versions "côté étudiants" et "côté parcours" renvoient exactement la même affectation [5, 6, 9, 9, 1, 0, 8, 7, 3, 2, 4, 4, 0]. Cela indique qu'il n'existe probablement qu'un seul mariage stable possible pour ces préférences. L'utilité minimale reste cependant à 5 (un étudiant obtient son 5ème vœu).
+
+B. Le paradoxe de l'efficacité pure (Q12)
+Le modèle de la Q12 cherche à maximiser le score global du système, atteignant un record de 239. Cependant, notre analyse montre que ce score est obtenu au détriment des étudiants pour favoriser les masters. En effet, l'utilité moyenne des étudiants chute à 8.77 (la plus basse de tous les tests) et un étudiant reste bloqué avec une utilité de 5. De plus, forcer cette efficacité détruit la stabilité de l'affectation, générant 7 paires instables (le pire score d'instabilité).
+
+C. Le prix de l'équité (Q11)
+En imposant la maximisation du pire score (utilité minimale remontée à 6), la Q11 force le solveur à trouver une solution extrêmement favorable aux étudiants : leur moyenne grimpe à 9.23 ! En contrepartie, la satisfaction des parcours s'effondre, ce qui se traduit par une utilité totale très faible (218). Le système est plus juste pour les candidats, mais génère tout de même 3 paires instables.
+
+D. Le compromis idéal (Q14)
+La relaxation avec k=4 s'avère être un excellent compromis. Elle maintient la garantie d'équité de la Q11 (le pire score ne descend pas sous 6), tout en récupérant une bien meilleure utilité globale (227) que la Q11. La moyenne étudiante s'aligne sur celle de Gale-Shapley (8.85), au prix acceptable de 5 paires instables.
+
+Conclusion
+
+Le choix de l'algorithme dépend des priorités institutionnelles :
+
+Si l'objectif est d'éviter les contestations et la jalousie, Gale-Shapley est incontournable.
+
+Si l'objectif est d'éviter la précarité d'un étudiant (aucun vœu au-delà du 4ème), le PLNE de la Q14 offre le meilleur équilibre mathématique entre justice sociale et efficacité globale.
