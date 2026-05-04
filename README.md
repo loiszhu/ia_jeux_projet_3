@@ -136,12 +136,20 @@ Le résultat est donc parfaitement cohérent avec l'analyse théorique. Pour un 
 
 # 3. Equité et PLNE
 
-### Question 12 - Efficacité
+### Question 11 - Equité maximale
+#### Trace d'exécution
+Utilité minimale z : 6.0
+Somme des utilités (Etu + Masters) : 218
+Scores des étudiants : [9, 10, 10, 10, 10, 10, 10, 10, 6, 10, 6, 9, 10]
+Affectation : [9, 6, 4, 9, 1, 0, 5, 7, 8, 2, 3, 4, 0] 
+
+### Question 12 - Efficacité maximale
 #### Trace d'exécution
 Somme des utilités (Etu + Masters) : 239.0
 Utilité moyenne par affectation : 18.38
 Utilité minimale (le pire score d'un étudiant) : 5
-scores_etudiants = [6, 9, 10, 10, 10, 9, 9, 9, 8, 10, 9, 5, 10]
+Scores des étudiants : [6, 9, 10, 10, 10, 9, 9, 9, 8, 10, 9, 5, 10]
+Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 4, 3, 0] 
 
 ### Question 14 - Plus petit k
 #### Trace d'exécution
@@ -152,19 +160,20 @@ Pas de solution possible pour k = 2
 Set parameter LogToConsole to value 0
 Pas de solution possible pour k = 3
 Set parameter LogToConsole to value 0
-Affectation : Etudiant 0 - Master 8 (4e voeu)
-Affectation : Etudiant 1 - Master 5 (1e voeu)
-Affectation : Etudiant 2 - Master 4 (0e voeu)
-Affectation : Etudiant 3 - Master 9 (0e voeu)
-Affectation : Etudiant 4 - Master 1 (0e voeu)
-Affectation : Etudiant 5 - Master 9 (1e voeu)
-Affectation : Etudiant 6 - Master 7 (1e voeu)
-Affectation : Etudiant 7 - Master 0 (1e voeu)
-Affectation : Etudiant 8 - Master 6 (2e voeu)
-Affectation : Etudiant 9 - Master 2 (0e voeu)
-Affectation : Etudiant 10 - Master 3 (4e voeu)
-Affectation : Etudiant 11 - Master 4 (1e voeu)
-Affectation : Etudiant 12 - Master 0 (0e voeu)
+Affectation : Etudiant 0 - Master 8 (5e voeu)
+Affectation : Etudiant 1 - Master 5 (2e voeu)
+Affectation : Etudiant 2 - Master 4 (1e voeu)
+Affectation : Etudiant 3 - Master 9 (1e voeu)
+Affectation : Etudiant 4 - Master 1 (1e voeu)
+Affectation : Etudiant 5 - Master 9 (2e voeu)
+Affectation : Etudiant 6 - Master 7 (2e voeu)
+Affectation : Etudiant 7 - Master 0 (2e voeu)
+Affectation : Etudiant 8 - Master 6 (3e voeu)
+Affectation : Etudiant 9 - Master 2 (1e voeu)
+Affectation : Etudiant 10 - Master 3 (5e voeu)
+Affectation : Etudiant 11 - Master 4 (2e voeu)
+Affectation : Etudiant 12 - Master 0 (1e voeu)
 Q14 - Résultat trouvé pour k = 4
 Somme des utilités (Etu + Masters) : 227.0
-liste des affectations = [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 3, 4, 0]
+Scores des étudiants : [6, 9, 10, 10, 10, 9, 9, 9, 8, 10, 6, 9, 10]
+Affectation : [8, 5, 4, 9, 1, 9, 7, 0, 6, 2, 3, 4, 0] 

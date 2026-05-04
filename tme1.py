@@ -92,7 +92,12 @@ def gale_shapley_etu(prefEtu, prefSpe, capacites):
             else :
                 etu_libres.append(etu_id)
     
-    return spe_affectations, nb_iterations
+    etu_affectations = [-1] * nb_etu
+    for spe_id in range(nb_spe):
+        for etu_id in spe_affectations[spe_id]:
+            etu_affectations[etu_id] = spe_id
+
+    return etu_affectations, nb_iterations
 
 def gale_shapley_spe(prefEtu, prefSpe, capacites):
     nb_etu = len(prefEtu)
@@ -154,24 +159,25 @@ def gale_shapley_spe(prefEtu, prefSpe, capacites):
         if (capacites[spe_id]) > len(spe_affectations[spe_id]):
             spe_libres.append(spe_id)
 
-    return spe_affectations
+    return etu_affectations
 
-def trouver_paires_instables(prefEtu, prefSpe, capacites, affectations):
+def trouver_paires_instables(prefEtu, prefSpe, capacites, affectations_etu):
     paires_instables = []
 
     nb_etu = len(prefEtu)
     nb_spe = len(prefSpe)
 
-    # Affections de chaque étudiants
-    etu_affectations = [-1] * nb_etu
-    for spe_id in range(nb_spe):
-        for etu_id in affectations[spe_id]:
-            etu_affectations[etu_id] = spe_id
+    # On reconstruit les listes d'étudiants par master pour vérifier les capacités plus bas
+    affectations_spe = [[] for _ in range(nb_spe)]
+    for etu_id in range(nb_etu):
+        spe_id = affectations_etu[etu_id]
+        if spe_id != -1: # Si l'étudiant a bien été affecté à un master
+            affectations_spe[spe_id].append(etu_id)
     
     # On vérifie pour chaque étudiant
     for etu_id in range(nb_etu):
         # l'id de master pris par cet étudiant (-1 s'il n'a pas de master)
-        master_pris = etu_affectations[etu_id]
+        master_pris = affectations_etu[etu_id]
 
         # Si l'étudiant a un master
         if master_pris != -1 :
@@ -188,18 +194,18 @@ def trouver_paires_instables(prefEtu, prefSpe, capacites, affectations):
         # On regarde tous ses masters préférés
         for spe_id in masters_preferes:
             # si le master a encore de la place
-            if len(affectations[spe_id]) < capacites[spe_id] :
+            if len(affectations_spe[spe_id]) < capacites[spe_id] :
                 paires_instables.append((etu_id, spe_id))
                 continue
 
             # si le master est plein
             else : 
                 # id de l'étudiant le moins préféré affecté par ce master
-                pire_admis = affectations[spe_id][0]
+                pire_admis = affectations_spe[spe_id][0]
                 # Le rang d'étudiant le moins préféré affecté par ce master
                 rang_pire_admis = prefSpe[spe_id].index(pire_admis)
                 # On parcourt les autres étudiants affecté pour trouver celui qui est moins préféré
-                for etu in affectations[spe_id]:
+                for etu in affectations_spe[spe_id]:
                     rang = prefSpe[spe_id].index(etu)
                     if rang > rang_pire_admis :
                         rang_pire_admis = rang
